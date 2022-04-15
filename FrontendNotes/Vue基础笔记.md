@@ -688,6 +688,16 @@ module.exports = {
    ...mapMutations('countAbout',{increment:'JIA',decrement:'JIAN'}),
    ```
 
+### 8.vuex模块动态注册
+
+```javascript
+this.$store.registerModule("moduleNmae", {})
+```
+
+
+
+
+
  ## 路由
 
 1. 理解： 一个路由（route）就是一组映射关系（key - value），多个路由需要路由器（router）进行管理。
@@ -1065,5 +1075,5 @@ module.exports = {
    1. 地址干净，美观 。
    2. 兼容性和hash模式相比略差。
    3. 应用部署上线时需要后端人员支持，解决刷新页面服务端404的问题。
-	 
+	
 	 
