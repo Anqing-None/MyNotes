@@ -20,6 +20,12 @@ git中的基本概念
 
 ## 命令
 
+git status
+
+git status --short 
+
+
+
 ### git clone
 
 `git clone https://github.com/Anqing-None/MyNotes.git`
@@ -35,7 +41,8 @@ D:\myDocument\MyNotes>git branch -a
   remotes/origin/main
 ```
 
-
+使用代理cloneGIthub代码：
+git clone https://github.com/Anqing-None/MyNotes.git --config 'https.proxy=sock5://127.0.0.1:1080'
 
 ![git clone](images/progit_v2.1.53_20220416172403.jpg)
 
