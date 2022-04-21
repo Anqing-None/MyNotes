@@ -165,3 +165,20 @@ git config --global user.email <mail>
 
 ### 多人协作
 
+本地commit之后想要push到远程
+
+尝试命令git push origin master
+
+提示成功，则远程分支没有被他人push变动
+
+提示失败，则需要拉取远程分支最新状态
+
+使用命令git pull 
+
+git pull 会先下载远程分支内容，然后将远程分支与本地分支合并
+
+如果文件没有冲突，万事大吉
+
+如果提示文件冲突，Conflicts ...
+
+手动解决冲突
