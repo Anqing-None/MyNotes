@@ -112,6 +112,10 @@ git resest
 
 git remote -v/--verbose
 
+
+
+### git commit
+
 提交到本地仓库
 
 git commit -m "description"
@@ -126,7 +130,7 @@ git commit -m "description"
 
 -p, --patch :显示每次提交所引入的差异
 
-
+--decorate: 列出各个分支所指向的commit对象
 
 示例：
 

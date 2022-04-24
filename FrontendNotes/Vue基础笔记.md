@@ -383,11 +383,23 @@ computed和watch之间的区别：
 
 
 
+示例：
 
+当渲染一个可选择列表，要求一次只能选择一个列表项，选择下一个列表项时，上一个被选中的列表样式应该被清空，本次选中的列表项应该被选中。
 
+使用v-for渲染列表时，都会有一个唯一的key。一个key对应一个唯一的列表项。
 
+列表项接收点击事件时，可以将key传值给对应的处理点击的函数。
 
+使用`v-bind:calss="{ active: isActived }"`时，isActived是一个[truthy](https://developer.mozilla.org/zh-CN/docs/Glossary/Truthy)即真值时，active才会被添加到class中。
 
+isActived可以是计算表达式，返回布尔值即可。由于每一个列表项在vue指令v-for渲染时，可以使用key，每个独立列表项的click事件也可以将这个唯一值的key传值出来，并且可以保存到data选项中的自定义数据中。
+
+所以我们可以事先在data中声明一个数据，selectkey。
+
+click事件将key传值给selectkey，isActived写成判断表达式：`key === selectkey`，当被点击的列表项将key传值给selectkey，此判断表达式结果为true，active则被添加到class中。
+
+总结一下上述思路：只有点击列表项时，才会得到selectkey；selectkey与key进行对比，相等则返回true，class名则会被添加到元素上。
 
 ## 脚手架文件结构
 
