@@ -19,11 +19,15 @@ fx-widget props:
 
 <img src="../images/fx-widget-props.png" alt="props" style="zoom:75%;" />
 
+### props：
+
 src: 用于引入组件，路径必须从web/...开始
 
 | 属性 | 说明                                  | 类型   | 默认值 |
 | ---- | ------------------------------------- | ------ | :----- |
 | src  | 用于引入组件，路径名必须从web/...开始 | String | -      |
+
+### events：
 
 fx-widget events:
 
@@ -154,3 +158,135 @@ init() {
 ```
 
 init方法接收了一个参数，该参数为一个组件对象
+
+## fx-websheet
+
+
+
+
+
+
+
+
+
+## fx-websheet-widget
+
+### props：
+
+| 属性        | 说明                                                         | 类型    | 默认值 |
+| ----------- | ------------------------------------------------------------ | ------- | ------ |
+| Name*       | 表格名称，必须正确，依据name去寻找模板JSON文件               | String  |        |
+| Type*       | 表单分类，例如："pick", 对应需要在目录 `web/config/websheetforms/` 下面创建名称为 ”pick“ 的文件夹 | String  |        |
+| DataSource* | 数据源，格式见[DataSource](#DataSource)                      | Object  |        |
+| Id          | 表单ID,组件默认会去请求接口 `/api/websheet/[Type]/[Id]` ，因此需要书写对应的 router.js 和 controller。在 controller 内处理表单权限、版本、草稿等实现。 |         |        |
+| key         |                                                              |         |        |
+| ReadOnly    | 是否只读                                                     | Boolean | false  |
+| TplObj      | 模板JSON对象,一般不建议使用，推荐是在统一规范的服务端目录下放置表单模板 | Object  |        |
+| Opts        | websheet缩放功能条配置项，见[Opts格式](#Opts)                | Object  |        |
+| Hooks       | 大量钩子函数                                                 |         |        |
+| DataUrl     | 自定义表单数据接口，默认是 `/api/websheet/[Type]/[Id]`       | String  |        |
+| UserData    | 自定义用户数据，方便随时在各个事件中取出                     | String  |        |
+| Namespace   | 命名空间，传入该值就开始监听相同命名空间的表单的 computed 和 alias，实现多表单联动 | String  |        |
+|             |                                                              |         |        |
+|             |                                                              |         |        |
+
+
+
+
+
+
+### events：
+
+| 事件名     | 说明                           | 返回值                    |
+| ---------- | ------------------------------ | ------------------------- |
+| loaded     | 拿到模板文件渲染到页面后触发   | 表单实例对象              |
+| oninit     | 单元格初始化后触发             |                           |
+| databound  | 单元格公式和事件绑定完毕后触发 |                           |
+| datachange | 单元格点击时触发               | 一个包含arg和改变值的对象 |
+
+
+
+### methods:
+
+| 方法名                   | 说明                                              | 参数        |
+| ------------------------ | ------------------------------------------------- | ----------- |
+| GetData(validation=ture) | 获取数据，validation 默认需要校验,传入false不校验 | { Boolean } |
+| Deldraft()               | 删除草稿，根据当前服务端传回来的 draftid 删除草稿 |             |
+| ExportExcel(filename)    | 导出 Excel 文件， filename 导出后的文件名         | { String }  |
+
+
+
+
+#### DataSource
+
+数据格式：
+
+```
+dataSource: {
+    "form": {
+        "UnitName": "公司名称",
+        "InstrumentSize": "",
+        "InstrumentNo": 999999966666,
+        "MethodAccord": "",
+        "ProjectType": "9999",
+        "Point": "",
+        "Description": "",
+        "FlowCalibNo": 2,
+        "BeforeCalibrationValue": "1999-02-10 18:10",
+        "AfterCalibrationValue": ""
+    },
+    "table": []
+}
+```
+
+form
+
+form主要对应的是表格的固定格式区域。每类检测记录表格都有对应模板，模板是表中数据不可变的部分。该区域不允许用户编辑。
+
+table
+
+检测记录表格的数据部分，一般由检测员进行编辑填写检测项目相关信息。
+
+![websheet-area](../images/websheet/websheet-form-table-area.png)
+
+
+
+#### Opts
+
+数据格式：
+
+```
+{
+	leftBar: false,
+	topBar: true
+}
+```
+
+vue devtool props
+
+![fx-websheet-widget-props](../images/websheet/fx-websheet-widget-props.png)
+
+
+
+
+
+### 表单结构模板JSON文件
+
+
+
+![template-json](../images/websheet/template-json-looklike.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
