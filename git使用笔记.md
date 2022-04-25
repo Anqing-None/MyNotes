@@ -90,7 +90,15 @@ git resest
 
 合并两个分支：`git merge <branch name>`
 
+切换跟踪的远程分支：`git branch -u origin/migrate`
 
+### git checkout
+
+切换开发远程分支，在本地创建一个与远程开发分支相同的分支名
+
+```
+git checkout -b dev origin/dev
+```
 
 
 
