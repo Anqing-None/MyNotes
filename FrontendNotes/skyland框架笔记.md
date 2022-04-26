@@ -247,11 +247,13 @@ table
 
 检测记录表格的数据部分，一般由检测员进行编辑填写检测项目相关信息。
 
-![websheet-area](../images/websheet/websheet-form-table-area.png)
+<img src="../images/websheet/websheet-form-table-area.png" id="websheet-form-area-img" alt="websheet-area" style="zoom:80%;" />
 
 
 
 #### Opts
+
+控制表单缩放工具栏
 
 数据格式：
 
@@ -276,17 +278,118 @@ vue devtool props
 
 ![template-json](../images/websheet/template-json-looklike.png)
 
+#### data
+
+entity
+
+指定对应数据区域，见[表单区域示意图](#websheet-form-area-img)
+
+```
+取值一般为两类：form与table
+"data": [{
+	"entity": "$data.form",
+	"layout": "form",
+	"bind": {...}
+},
+]
+"entity": "$data.form",
+```
+
+*bind
+
+绑定单元格/合并单元格的变量
+
+```
+    "bind": {
+      "E3": {
+        "field": "analysisElement",// 对应form区域或table区域DataSource中的数据
+        "type": "string",// 变量类型
+        "tag": "",// 标记
+        "formula": "",// 公式
+        "alias": "",// 别名
+        "style": {}, //一些样式
+        "label": ""  //？？
+        "validation": {
+        	"regex": "^[^0-9]*$",// 校验正则
+        	"tip": "校验失败后的提示"
+        },
+        "required": true // 是否必填项
+        
+    }
+```
+
+type
+
+指定单元格变量类型，string number image treeselect  select datatime degree autocomplete
+
+框架内置了一些type调用的组件存储在`\fx.nodejs.demov1\demo-server\node_modules\@skyland\websheet-server\web\config\websheetcells`
+
+指定type后，双击该单元格，就会调用type组件。
 
 
 
+tag
+
+标签，调用某个自定义HTML标签文件
+
+demo中，此文件存储在`/web/config/websheettags/xxx.js`
+
+#### cells
+
+cells定义了每个单元格的样式，默认文本
+
+```
+// cells looks like
+"cells": {
+    "A1": {
+      "style": {
+        "fontFamily": "'宋体', SimSun, Serif",
+        "fontSize": "12px",
+        "color": "#000000",
+        "verticalAlign": "middle",
+        "textAlign": "center"
+      },
+      "text": "无机元素类检验检测分析记录-固体试样(单参数）"
+    },
+    ...many cells
+}
+```
+
+#### xlsxRowHeight、xlsxColHeight
+
+记录了表格行高与列宽，单位为px
+
+```
+  "xlsxRowHeight": {
+    "0": 30,
+    "1": 15,
+    "2": 15,
+    "3": 15
+  },
+    "xlsxColWidth": {
+    "A": 11.28125,
+    "B": 8.43,
+    "C": 8.43,
+    "D": 10.00390625,
+	...many columns
+  },
+```
+
+#### rowHeight、colWidth
 
 
 
+#### spans
 
+记录合并的单元格区域
 
-
-
-
+```
+  "spans": [
+    "A1:I1",
+    "B2:H2",
+    "B4:J4"
+  ],
+```
 
 
 
