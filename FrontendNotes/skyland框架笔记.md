@@ -184,12 +184,74 @@ init方法接收了一个参数，该参数为一个组件对象
 | TplObj      | 模板JSON对象,一般不建议使用，推荐是在统一规范的服务端目录下放置表单模板 | Object  |        |
 | Opts        | websheet缩放功能条配置项，见[Opts格式](#Opts)                | Object  |        |
 | Hooks       | 大量钩子函数                                                 |         |        |
-| DataUrl     | 自定义表单数据接口，默认是 `/api/websheet/[Type]/[Id]`       | String  |        |
+| DataUrl*    | 自定义表单数据接口，默认是 `/api/websheet/[Type]/[Id]`       | String  |        |
 | UserData    | 自定义用户数据，方便随时在各个事件中取出                     | String  |        |
 | Namespace   | 命名空间，传入该值就开始监听相同命名空间的表单的 computed 和 alias，实现多表单联动 | String  |        |
-|             |                                                              |         |        |
+| Mode        |                                                              |         |        |
 |             |                                                              |         |        |
 
+
+
+#### DataSource
+
+DataSource是用来指定表单的默认数据
+
+数据格式：
+
+```
+dataSource: {
+    "form": {
+        "UnitName": "公司名称",
+        "InstrumentSize": "",
+        "InstrumentNo": 999999966666,
+        "MethodAccord": "",
+        "ProjectType": "9999",
+        "Point": "",
+        "Description": "",
+        "FlowCalibNo": 2,
+        "BeforeCalibrationValue": "1999-02-10 18:10",
+        "AfterCalibrationValue": ""
+    },
+    "table": []
+}
+```
+
+form
+
+form主要对应的是表格的固定格式区域。每类检测记录表格都有对应模板，模板是表中数据不可变的部分。
+
+table
+
+检测记录表格的数据部分，一般由检测员进行编辑填写检测项目相关信息。
+
+<img src="../images/websheet/websheet-form-table-area.png" id="websheet-form-area-img" alt="websheet-area" style="zoom:80%;" />
+
+
+
+#### Opts
+
+控制表单缩放工具栏
+
+数据格式：
+
+```
+{
+	leftBar: false,
+	topBar: true
+}
+```
+
+### Hooks
+
+表单会触发一系列生命周期函数保存在web/config/websheetforms/[Type]/[name].js中
+
+
+
+```
+Load() {
+	//表单加载完成触发
+}
+```
 
 
 
@@ -217,56 +279,16 @@ init方法接收了一个参数，该参数为一个组件对象
 
 
 
-#### DataSource
-
-数据格式：
-
-```
-dataSource: {
-    "form": {
-        "UnitName": "公司名称",
-        "InstrumentSize": "",
-        "InstrumentNo": 999999966666,
-        "MethodAccord": "",
-        "ProjectType": "9999",
-        "Point": "",
-        "Description": "",
-        "FlowCalibNo": 2,
-        "BeforeCalibrationValue": "1999-02-10 18:10",
-        "AfterCalibrationValue": ""
-    },
-    "table": []
-}
-```
-
-form
-
-form主要对应的是表格的固定格式区域。每类检测记录表格都有对应模板，模板是表中数据不可变的部分。该区域不允许用户编辑。
-
-table
-
-检测记录表格的数据部分，一般由检测员进行编辑填写检测项目相关信息。
-
-<img src="../images/websheet/websheet-form-table-area.png" id="websheet-form-area-img" alt="websheet-area" style="zoom:80%;" />
-
-
-
-#### Opts
-
-控制表单缩放工具栏
-
-数据格式：
-
-```
-{
-	leftBar: false,
-	topBar: true
-}
-```
 
 vue devtool props
 
 ![fx-websheet-widget-props](../images/websheet/fx-websheet-widget-props.png)
+
+
+
+
+
+
 
 
 
@@ -278,9 +300,19 @@ vue devtool props
 
 ![template-json](../images/websheet/template-json-looklike.png)
 
+
+
+表单模板json文件一般存储在web/config/websheetforms/[Type]/[name].json
+
+同时会有一个同名的js文件，该文件主要定义表单大量的钩子函数。
+
+Load
+
+
+
 #### data
 
-entity
+##### entity
 
 指定对应数据区域，见[表单区域示意图](#websheet-form-area-img)
 
@@ -295,7 +327,33 @@ entity
 "entity": "$data.form",
 ```
 
-*bind
+使用toml语法在A1单元格指定区域范围
+
+```
+[[layout]]
+layout = "table"
+entity = "table"
+area = "A16:H20"
+
+指定多个table区域
+[[layout]]
+layout = "table"
+entity = "table1"
+area = "A16:H20"
+
+[[layout]]
+layout = "table"
+entity = "table2"
+area = "A16:H20"
+```
+
+A1单元格虽然被[[layout]]占用了，指定的区域不需要自己减一，生成的json会自动转换。
+
+因为只有两个区域，所以只需指定table区域即可，其余区域则为form。
+
+
+
+##### *bind
 
 绑定单元格/合并单元格的变量
 
@@ -318,7 +376,7 @@ entity
     }
 ```
 
-type
+##### type
 
 指定单元格变量类型，string number image treeselect  select datatime degree autocomplete
 
@@ -326,9 +384,272 @@ type
 
 指定type后，双击该单元格，就会调用type组件。
 
+type的实质就是一个继承了HTMLElement类型的自定义HTML元素。依据指定的type值，去相应文件夹下寻找自定义了HTML元素的js文件。
+
+js文件使用AMD模块语法进行引入。在定义时拿到了全局的Vue构造函数，新建了一个元素，将该元素变成vm实例。通过闭包的特性访问此vm实例。vm实例一般用来控制modal对话框，使用户在对话框内进行选择数据，选择数据后在单元格展示。
+
+控制单元格展示值的属性为cellthis.textContent
+
+```JavaScript
+define(function () {
+  let el = document.createElement("div");
+
+  document.body.appendChild(el);
+
+  let Vue = window.$app.Vue;
+  let vm = new Vue({
+    el,
+    data() {
+      return {
+        isShow: false,
+        cellthis: null, //服务的单元格对象，会在startEdit中赋值
+      }
+    },
+    methods: {
+      /**
+       * 
+       * @param {Object} value 选中的仪器数据 {key：仪器名称，value：[仪器型号]}
+       */
+      ok(value) {
+        // 将数据传给单元格对象,会被value setter函数接收
+        this.cellthis.value = JSON.stringify(value);
+        // close modal
+        this.isShow = false;
+
+      },
+      // 用户取消选择
+      cancle() {
+        // close modal
+        this.isShow = false;
+      }
+    },
+    template: 
+    `
+      <Modal v-model="isShow" :footer-hide="true" :closable="false""> 
+        <div>
+          <lims-instrumentselect @on-getUnitInfo="ok" @cancle-select="cancle"></lims-instrumentselect>
+        </div>
+      </Modal>
+    `,
+  })
 
 
-tag
+
+  class instruSelect extends HTMLElement {
+    constructor () {
+      super();
+    }
+
+    // 单元格初始化时钩子
+    onInit() {
+      // debugger;
+    }
+    //单元格生产到页面
+    onMounted(a,b,c) {
+      //可以获取到表格数据 tdObj
+      // debugger;
+      this.tableinfo
+    }
+
+    connectedCallback() {
+      // debugger;
+    }
+
+
+    get text() {
+      return this._value.value[0];
+    }
+
+    get value() {
+      return this._value;
+    }
+
+    // 对单元格的值进行代理
+    set value(value) {
+      //将值交给setVal函数处理
+      this.setVal(value,true);
+    }
+
+    /**
+     * 
+     * @param {String} value json字符串
+     * @param {Boolean} flag 标志
+     */
+
+    setVal(value,flag) {
+      // 尝试将json字符串解析为对象
+      try {
+        this._value = JSON.parse(value);
+      } catch (error) {
+        // 如果解析错误，显示空白
+        this.textContent = typeof value === `string` ? value : ``;
+        return;
+      }
+
+      //设置单元格显示的文本，在text的getter中得到文本
+      this.textContent = this.text;
+
+      // this.dispatchEvent(new CustomEvent('textchange', {
+      //   bubbles: false,
+      //   cancelable: false,
+      //   detail: [this.text]
+      // }))
+
+
+
+
+    }
+
+    //单元格开始编辑，双击单元格进入编辑模式时会触发此函数
+    startEdit(){
+      
+      const _this = this;
+
+      let { options } = this;
+
+      vm.value = this.value;
+
+      vm.cellthis = _this;
+      vm.$set(vm, "normalizer", (node) => {
+        return {
+          id: node[options.nameField],
+          label: node[options.textField],
+          children: node[options.children],
+        }
+      })
+
+      // vm.$set(vm, "options", this.treelist)
+
+      //点击单元格时唤醒弹窗
+      vm.isShow = true;
+
+      //返回false代表不希望首次输入按键值会有效果,并且这也意味着放弃Tag效果,专注自定义单元格
+      return false;
+    }
+    onTextditorClose() {
+      // debugger;
+    }
+    disconnectedCallback() {
+      // debugger;
+    }
+
+    //单元格被选中时触发
+    onCellSelect() {
+
+    }
+
+    // 单元格在选中时，失去焦点时触发
+    onCellUnSelect(){
+    }
+
+
+    onbeforeKeyDown() {
+      // debugger;
+    }
+
+
+  }
+  return instruSelect;
+
+})
+```
+
+###### 单元格事件钩子
+
+一个单元格有一系列钩子
+
+onInit
+
+onMounted
+
+connectedCallback
+
+startEdit
+
+双击单元格时会触发此钩子函数
+
+在此函数中将单元格对象存储到vm对象中
+
+vm对象中可以将用户选择的值传递给单元格对象
+
+单元格自定义元素可以对传递的值进行一定的处理，然后显示到单元格中
+
+onTextditorClose
+
+disconnectedCallback
+
+onCellSelect
+
+onCellUnSelect
+
+onbeforeKeyDown
+
+这些钩子都是定义在自定义元素方法内，也可以新增自定义方法。
+
+钩子函数的this执行的是单元格实例，this中不仅存储了本单元格的数据，还存储了整个表单对象的数据，或者是某一行的数据。
+
+除了对与单个单元格的钩子函数，还有整个表单对象的钩子函数（与表单文件同名的js文件）和fx-websheet-widget组件的[事件](#events)。
+
+###### select
+
+使用select type必须指定options
+
+```
+        "C3": {
+          "field": "sampleType",
+          "type": "select",
+          "style": {},
+          "options": [{
+              "name": 1,
+              "text": "土壤"
+            },
+            {
+              "name": 2,
+              "text": "沉积物"
+            }
+          ]
+        }
+```
+
+text是页面显示的文本，name是传输的数据。
+
+##### formula
+
+简单加减乘除公式可直接使用
+
+```
+        {
+          "field": "f",
+          "type": "string",
+          "style": {},
+          "formula": "=F6+G6"
+        },
+```
+
+公式的指定位置必须是field所在行的位置。
+
+函数式公式需要自己定义
+
+web/config/websheetforms/[Type]/inject.js
+
+```
+// 使用AMD模块语法定义公式函数
+
+define([], function () {
+  return {
+    PERCENTAGE (num, total) { 
+      if (num == 0 || total == 0){
+          return 0;
+      }
+      return (Math.round(num / total * 10000) / 100.00 + '%');
+      }
+  }
+});
+```
+
+
+
+##### tag
 
 标签，调用某个自定义HTML标签文件
 
