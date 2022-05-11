@@ -104,6 +104,47 @@ ctx.params = {
 router.get(/regular expression/, controller.user.info);
 ```
 
+### controller目录
+
+app/router.js已经定义了路径与处理函数的映射关系。所以下一步就是定义处理请求的对应方法。
+
+controller目录用于定义处理特定路径请求的处理方法。
+
+controller目录中的js文件继承egg的controller构造函数，然后导出即可在controller中拿到。
+
+controller.user.info表示的是user.js文件中的info函数。
+
+### service目录
+
+有些逻辑是通用的，controller中的处理函数若有相同的处理需求，可以将其通用逻辑写在service目录中，从而进行代码复用。
+
+service中的方法继承了egg的service对象
+
+在controller目录中定义的路由处理函数可以通过this拿到在service中定义的函数`this.ctx.service.main.getData`
+
+main是service中的main.js。
+
+getData是main.js中的函数。
+
+
+
+### extend目录
+
+定义一些对egg内置对象的拓展方法。
+
+如果要在app对象上定义一个方法，需要在app/extend目录下创建一个application.js，导出对应方法即可。
+
+```javascript
+// app/extend/application.js
+module.exports = {
+  foo(param) {
+    // this 就是 app 对象，在其中可以调用 app 上的其他方法，或访问属性
+  },
+};
+```
+
+参考：[egg框架拓展](https://www.eggjs.org/zh-CN/basics/extend)
+
 
 
 ## model目录
@@ -503,3 +544,45 @@ AboutController {
 }
 ```
 
+## config目录
+
+配置可以在app.config中访问到。
+
+配置文件类型由运行环境区分。一个配置本质就是一个js对象，在文件中直接返回即可。
+
+
+
+
+
+## 插件与框架
+
+应用是整个egg项目，包含路由与控制器。
+
+框架与应用结构类似，但不包含路由与控制器。
+
+插件与框架类似，但不包含config/plugins.js。
+
+### 使用插件
+
+使用npm安装后，在config/plugin.js文件内启用。
+
+```js
+// 应用配置
+// package.json
+{
+  "dependencies": {
+    "egg": "^2.0.0",
+    "egg-mysql": "^3.0.0"
+  }
+}
+
+// config/plugin.js
+module.exports = {
+  mysql: {
+    enable: true,
+    package: 'egg-mysql',
+  },
+}
+```
+
+使用

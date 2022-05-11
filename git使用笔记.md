@@ -32,7 +32,7 @@ git status --short
 
 从远程仓库复制代码到本地。
 
-本地自动具有origin/main分支，同时也在本地创建了main指针。
+本地自动具有origin/main分支，同时也在本地创建了main分支。
 
 ```bash
 D:\myDocument\MyNotes>git branch -a
@@ -41,7 +41,7 @@ D:\myDocument\MyNotes>git branch -a
   remotes/origin/main
 ```
 
-使用代理cloneGIthub代码：
+通过代理cloneGIthub代码：
 git clone https://github.com/Anqing-None/MyNotes.git --config 'https.proxy=sock5://127.0.0.1:1080'
 
 ![git clone](images/progit_v2.1.53_20220416172403.jpg)
@@ -50,7 +50,7 @@ git clone https://github.com/Anqing-None/MyNotes.git --config 'https.proxy=sock5
 
 ### git fetch
 
-git fetch会向远程分支获取最新的commit提交，并将origin/main指针指向最新的commit。
+git fetch会获取远程分支最新的commit提交，并将origin/main指针指向最新的commit。
 
 
 
@@ -118,7 +118,7 @@ C:\Users\Administrator\Desktop\companyManagement\qhlims>git branch -r
 
 ### git checkout
 
-切换开发远程分支，在本地创建一个与远程开发分支相同的分支名
+切换开发远程分支，在本地创建一个与远程开发分支相同的分支名并切换到该分支
 
 ```
 git checkout -b dev origin/dev
@@ -186,6 +186,8 @@ git commit --amend -m "new description"
 
 ### git pull
 
+git pull是fetch和merge的一步操作
+
 ### git config
 
 配置用户基本信息
@@ -198,6 +200,23 @@ git config --global user.email <mail>
 查看git目前使用的配置，及配置文件所在位置
 
 `git config --list --show-origin`
+
+```
+// 查看当前代理设置
+git config --global http.proxy
+git config --global https.proxy
+
+// 设置当前代理为 http://127.0.0.1:1080 或 socket5://127.0.0.1:1080
+git config --global http.proxy 'http://127.0.0.1:1080'
+git config --global https.proxy 'http://127.0.0.1:1080'
+
+git config --global http.proxy 'socks5://127.0.0.1:1080'
+git config --global https.proxy 'socks5://127.0.0.1:1080'
+
+// 删除 proxy
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+```
 
 
 
@@ -219,4 +238,9 @@ git pull 会先下载远程分支内容，然后将远程分支与本地分支�
 
 如果提示文件冲突，Conflicts ...
 
-手动解决冲突
+手动解决冲突，重新commit
+
+此时，本地分支会领先远程分支，git push即可。
+
+
+
