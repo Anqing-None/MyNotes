@@ -179,16 +179,20 @@ init方法接收了一个参数，该参数为一个组件对象
 | Type*       | 表单分类，例如："pick", 对应需要在目录 `web/config/websheetforms/` 下面创建名称为 ”pick“ 的文件夹 | String  |        |
 | DataSource* | 数据源，格式见[DataSource](#DataSource)                      | Object  |        |
 | Id          | 表单ID,组件默认会去请求接口 `/api/websheet/[Type]/[Id]` ，因此需要书写对应的 router.js 和 controller。在 controller 内处理表单权限、版本、草稿等实现。 |         |        |
+| DataUrl*    | 自定义表单数据接口，默认是 `/api/websheet/[Type]/[Id]`，会优先于上一条Id的指定方式。 | String  |        |
 | key         |                                                              |         |        |
-| ReadOnly    | 是否只读                                                     | Boolean | false  |
+| ReadOnly    | 表单是否只读                                                 | Boolean | false  |
 | TplObj      | 模板JSON对象,一般不建议使用，推荐是在统一规范的服务端目录下放置表单模板 | Object  |        |
 | Opts        | websheet缩放功能条配置项，见[Opts格式](#Opts)                | Object  |        |
 | Hooks       | 大量钩子函数                                                 |         |        |
-| DataUrl*    | 自定义表单数据接口，默认是 `/api/websheet/[Type]/[Id]`       | String  |        |
 | UserData    | 自定义用户数据，方便随时在各个事件中取出                     | String  |        |
 | Namespace   | 命名空间，传入该值就开始监听相同命名空间的表单的 computed 和 alias，实现多表单联动 | String  |        |
 | Mode        |                                                              |         |        |
 |             |                                                              |         |        |
+
+
+
+
 
 
 
