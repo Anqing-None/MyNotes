@@ -1099,7 +1099,9 @@ module.exports = {
 this.$store.registerModule("moduleNmae", {})
 ```
 
+moduleNmae为状态模块名称
 
+{}为vuex配置对象
 
 
 

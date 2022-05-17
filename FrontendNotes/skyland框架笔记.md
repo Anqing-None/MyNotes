@@ -280,9 +280,9 @@ Load() {
 | Deldraft()               | 删除草稿，根据当前服务端传回来的 draftid 删除草稿 |             |
 | ExportExcel(filename)    | 导出 Excel 文件， filename 导出后的文件名         | { String }  |
 
+#### GetData
 
-
-
+获取表单数据，用户输入数据完毕后，获取到已填写到表单的数据，用于保存草稿或者保存数据。
 
 vue devtool props
 

@@ -1,39 +1,66 @@
 # st_picksample_bottle
-
 交接样品表
 
-BottleID
-
+## BottleID
 （样品瓶ID）
 
-InspectItems
-
+## MonitorSampleID
+## InspectItems
 （分析因子）示例值：氨氮;总氮;化学需氧量
-
-BarCode
-
+## InspectItemIDs
+分析因子ID，以英文分号隔开
+## BarCode
 （瓶编码）
-
-BottleStatus
-
-（瓶状态）
-
-ProjectID
-
+## Sign
+## DelivererDate
+## BottleMem
+## PrintType
+## PrintDate
+## Deliverer
+## IsDiv
+## FatherId
+## SecondCode
+## QCType
+## DivBarCode
+## BottleType
+## BottleVolumen
+## SampleDescription
+## SamplePreservation
+## LabSelfCode
+## IsAssistAnalyse
+## AssistBaseOnBottleID
+## IsRetained
+## Integrality
+## ChatID
+## ProjectID
 （监测项目ID）
 
-RecvFromUserID
-
+## isdelete
+## PickID
+## Receiver
+## ReceiveDate
+## IsReceived
+## ScanState
+## ScanDate
+## PrintCount
+## OriginalData
+## SampleOffID
+## PickOffID
+## BottleOffID
+## CoopID
+## BottleStatus
+（瓶状态）handover:交接中 received:分样中 dispatched:领样中|完成
+## SampleHandoverMaster
+## SampleHandoverDate
+## DivSampleMaster
+## DivSampleDate
+## RecvFromUserID
 （交样人）
-
-RecvDt
-
+## RecvDt
 （交样时间）
-
-DispatchToUserID
-
+## DispatchToUserID
 （领样人）
-
-DispatchDt
-
+## DispatchDt
 （领样时间）
+## CreateTime
+## BottleTemplateID

@@ -1,6 +1,6 @@
 # setting_analyseform
 
-分析表单设置
+分析表单模板设置表
 
 ## AnalyseFormID
 
