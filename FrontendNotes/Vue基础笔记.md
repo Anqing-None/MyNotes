@@ -597,7 +597,7 @@ click事件将key传值给selectkey，isActived写成判断表达式：`key === 
         }
         ```
 
-    3. 若想让自定义事件只能触发一次，可以使用```once```修饰符，或```$once```方法。
+3. 若想让自定义事件只能触发一次，可以使用```once```修饰符，或```$once```方法。
 
 4. 触发自定义事件：```this.$emit('atguigu',数据)```		
 
@@ -776,17 +776,20 @@ module.exports = {
                   </div>
               </template>
       ```
-
+   
+   
    2. 具名插槽：
-
+   
+      如果一个子组件内需要多个插槽来分发内容，就需要为插槽指定name属性。子组件具有的插槽会放置在子组件实例`vm.$slots.[name]`上。一个不带name属性的slot会具有一个默认名字，"default"，即`vm.$slots.default`。$slot的数据格式为`{default: [VNode]} { [name: string]: ?Array<VNode> }`。
+   
       ```vue
       父组件中：
               <Category>
                   <template slot="center">
                     <div>html结构1</div>
                   </template>
-      
-                  <template v-slot:footer>
+      			<!--上述直接使用slot属性的方法在2.6.0版本已经被废弃，现在使用v-slot代替,v-slot只能在template标签上使用，v-slot指令可以缩写为#，-->
+                  <template v-slot:footer> <!--<template #footer>-->
                      <div>html结构2</div>
                   </template>
               </Category>
@@ -799,13 +802,15 @@ module.exports = {
                   </div>
               </template>
       ```
-
+   
    3. 作用域插槽：
-
+   
       1. 理解：<span style="color:red">数据在组件的自身，但根据数据生成的结构需要组件的使用者来决定。</span>（games数据在Category组件中，但使用数据所遍历出来的结构由App组件决定）
-
+   
+      1. 在子组件的slot标签上绑定插槽props，类似于这样`<slot :games="games"></slot>`，父组件可以接受到子组件传递过来的插槽props，使用v-slot指令接收`<template v-slot:default="games">{{games}}</template>`，默认插槽default名称可以省略，`<template v-slot="games">{{games}}</template>`，但不可以和具名插槽混用。
+   
       2. 具体编码：
-
+      
          ```vue
          父组件中：
          		<Category>
@@ -843,9 +848,14 @@ module.exports = {
                      }
                  </script>
          ```
-   ```
+         
+
+4.注意
+插槽的数据不是响应式的。
+
    
-   ```
+
+   
 
 ## Vuex
 
