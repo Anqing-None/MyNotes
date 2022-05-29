@@ -309,7 +309,63 @@ from
 
 
 
+文件操作
 
+Node.js的文件操作方法存在两种类型：同步（sync）和异步（async）
+
+### readFile
+
+读取文件
+
+回调方式写法
+
+`fs.readFile(path[,options],callback)`
+
+`[,options]`是可选参数，用于定义读取文件的选项，当省略options调用该方法时，文本的编码未指定，会默认返回数据Buffer：
+
+`fs.readFile("./data.txt",(err,data) => {...})`
+
+options可以是Object类型和String类型，可以指定读取文件的三个选项
+
+- encoding
+
+用于指定文件的编码格式，默认值为null，通常指定为utf-8。
+
+- flag
+
+用于指定文件的读取方式，在文件系统flags中取值。默认值为r。
+
+- signal
+
+用于指定是否允许读取文件过程中，中断读取
+
+传入options的类型为String时，即直接指定encoding。
+
+`fs.readFile("data.txt","utf8",(err,data)=>{...})`
+
+
+
+### writeFIle
+
+写入文件
+
+回调方式写法
+
+`fs.writeFile(file,data[,options],callback)`
+
+`fs.writeFile('data.txt','content',(err) => {...})`
+
+### appendFile
+
+以追加内容的方式写入文件
+
+### copyFile
+
+复制文件
+
+### watchFile
+
+监听文件内容的变动
 
 
 
