@@ -53,18 +53,31 @@
 ## FailMsgOfQcJudge
 ## FailMsgOfSampleLogic
 ## IndoorDeviationRateLimit
+
+室内标准偏差限制范围
+
 ## IsFailByEnvirStandard
 ## IsFailByQcJudge
 ## IsFailBySampleLogic
 ## QcDeviationRate
+
+标准偏差结果
+
 ## QcJudgeDate
 ## QcJudgeStandardID
 ## QcJudgeUser
 ## QcRecoveryRate
+
+回收率
+
 ## RecoveryRateLimit
+
 回收率区间 示例值：80%~120%
 ## ValidateInfo
 ## QcAverageValue
+
+平行与原样平均值
+
 ## WeightValue
 ## EnvirStandardGrade
 ## PretreatDevice
@@ -81,4 +94,5 @@
 ## BOD_Value5
 ## AverageValue
 均值
+
 ## isdelete

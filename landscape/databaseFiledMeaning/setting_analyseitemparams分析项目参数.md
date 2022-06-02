@@ -23,7 +23,7 @@
 主键，记录分析参数id
 ## AnalysisItemID
 ## MethodID
-分析标准方法的ID，对应数据表setting_analysemethod](./setting_analysemethod分析标准.md)
+分析标准方法的ID，对应数据表[setting_analysemethod](./setting_analysemethod分析标准.md)
 ## \*InspectTypes
 检测项目的类别（大类），如“水（含大气降水）和废水”，“土壤、水系沉积物”
 ## ItemName
@@ -47,6 +47,9 @@
 ## AuditUserStr
 审查者的ID，对应数据表fx_userinfo，记录了每个用户的信息
 ## InspectSubType
+
+检测项目小类，示例值：废水、地表水、；对应表[Setting_InspectType检测项目类别分类](Setting_InspectType检测项目类别分类.md)
+
 ## AnalyseUserStr
 
 分析人员ID，使用英文分号隔开。此字段设置对应检测项目的分析人员。

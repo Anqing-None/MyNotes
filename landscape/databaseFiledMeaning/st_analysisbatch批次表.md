@@ -21,6 +21,8 @@
 
 ## AttachmentPath
 
+附件存放路径
+
 ## BatchProcessFormPath
 
 ## BatchProcessData
@@ -41,7 +43,11 @@
 
 ## Temperature
 
+温度
+
 ## StandardIds
+
+包含的标准id
 
 ## SubmitDate
 
@@ -49,7 +55,11 @@
 
 ## AuditDate
 
+审核日期
+
 ## AuditUser
+
+审核人
 
 ## RecheckDate
 

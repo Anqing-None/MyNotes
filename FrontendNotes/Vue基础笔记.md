@@ -805,7 +805,7 @@ module.exports = {
    
    3. 作用域插槽：
    
-      1. 理解：<span style="color:red">数据在组件的自身，但根据数据生成的结构需要组件的使用者来决定。</span>（games数据在Category组件中，但使用数据所遍历出来的结构由App组件决定）
+      1. 理解：<span style="color:red">数据在子组件的自身，但根据数据生成的结构需要组件的使用者（父组件）来决定。</span>（games数据在Category组件中，但使用数据所遍历出来的结构由App组件决定）
    
       1. 在子组件的slot标签上绑定插槽props，类似于这样`<slot :games="games"></slot>`，父组件可以接受到子组件传递过来的插槽props，使用v-slot指令接收`<template v-slot:default="games">{{games}}</template>`，默认插槽default名称可以省略，`<template v-slot="games">{{games}}</template>`，但不可以和具名插槽混用。
    

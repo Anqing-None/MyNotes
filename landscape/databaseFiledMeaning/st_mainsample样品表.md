@@ -7,26 +7,63 @@
 主键
 ## PickSampleID
 ## BottleID
+
+凭ID
+
 ## SecondCode
+
+分析表单上的样品编号
+
 ## QCType
+
+样品类型，示例值：1，代表普通样品。
+
+| 样品代码 | 样品类型     |
+| -------- | ------------ |
+| 1        | 普通样品     |
+| 9        | 室内平行样   |
+| 10       | 室内空白样   |
+| 11       | 室内加标样   |
+| 12       | 室内标准物质 |
+
+
+
 ## Item
+
+项目名称
+
 ## ItemID
-## InspectType
+
+项目名称ID
+
+## \*InspectType
+
+分析类型
+
 ## TakeMan
 ## TakeDate
 ## MaxDayDate
 ## MaxDaysToSubmitResult
 ## ExpiredDate
 ## SampleBatchID
+
+样品所属批次ID
+
 ## AnalysisBatchID
 ## SubSampleDate
 ## StandardVolume
+
+标准体积
+
 ## StandardConditionID
 ## StandardConditionName
 ## StandardLimit
 ## IsQualified
 ## DurationMinute
 ## ProjectID
+
+此样品属于哪个Project任务
+
 ## PickID
 ## ExceedingRate
 ## IsAssistAnalyse
@@ -35,6 +72,9 @@
 ## JobDutyID
 ## LabSelfCode
 ## SortNoInBatch
+
+在批次中的序号，某些批次样品需要放在前面。
+
 ## StandardSettingJson
 ## VirtualQc2ShareMainID
 ## OS_ProjectID
