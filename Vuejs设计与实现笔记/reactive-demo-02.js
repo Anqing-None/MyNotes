@@ -19,7 +19,7 @@ let data = new Proxy(_data, {
 		target[key] = newValue;
 		// 改变数据时，通知get中记录的“谁”
 		bucket.forEach(fn => {
-			console.log(`数据发送改变，调用副作用函数fn更新数据`);
+			console.log(`数据发生改变，调用副作用函数fn更新数据`);
 			fn();
 		});
 		return true;
