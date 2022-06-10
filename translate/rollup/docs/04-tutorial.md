@@ -4,6 +4,8 @@ title: Tutorial
 
 ### Creating Your First Bundle
 
+### 创建你的第一个打包模块代码
+
 _Before we begin, you'll need to have [Node.js](https://nodejs.org) installed so that you can use [NPM](https://npmjs.com). You'll also need to know how to access the [command line](https://www.codecademy.com/learn/learn-the-command-line) on your machine._
 
 你需要安装node.js和一些命令行基本操作知识，才能完成打包练习示例。
@@ -19,13 +21,19 @@ npm install rollup --global
 
 You can now run the `rollup` command. Try it!
 
+你可以直接在命令行运行rollup命令。
+
 ```
 rollup
 ```
 
 Because no arguments were passed, Rollup prints usage instructions. This is the same as running `rollup --help`, or `rollup -h`.
 
+因为上条命令没有传递任何参数，Rollup会默认打印使用帮助，就像使用rollup --help/-h命令一样。
+
 Let's create a simple project:
+
+创建一个简单的项目：
 
 ```
 mkdir -p my-rollup-project/src
@@ -38,13 +46,15 @@ First, we need an _entry point_. Paste this into a new file called `src/main.js`
 
 ```js
 // src/main.js
-import foo from './foo.js';
+import foo from './foo.js'; // 此处文件路径必须要有"./"，以标识这不是一个node内置模块，否则会找不到该模块
 export default function () {
   console.log(foo);
 }
 ```
 
 Then, let's create the `foo.js` module that our entry point imports:
+
+然后我们创建main.js文件依赖的foo.js模块：
 
 ```js
 // src/foo.js
@@ -53,13 +63,15 @@ export default 'hello world!';
 
 Now we're ready to create a bundle:
 
+创建完成后运行打包命令：
+
 ```
 rollup src/main.js -f cjs
 ```
 
 The `-f` option (short for `--format`) specifies what kind of bundle we're creating — in this case, CommonJS (which will run in Node.js). Because we didn't specify an output file, it will be printed straight to `stdout`:
 
-`-f`选项是`--format`的缩写，用来指定打包的模块格式。
+`-f`选项是`--format`的缩写，用来指定打包的模块格式。因为我们未指定输出内容到哪个文件，rollup将会直接在控制台输出打包结果。
 
 ```js
 'use strict';
@@ -75,11 +87,15 @@ module.exports = main;
 
 You can save the bundle as a file like so:
 
+你可以使用参数将打包结果保存到文件：
+
 ```
 rollup src/main.js -o bundle.js -f cjs
 ```
 
 (You could also do `rollup src/main.js -f cjs > bundle.js`, but as we'll see later, this is less flexible if you're generating sourcemaps.)
+
+（你同样也可以使用重定向符号来保存打包后的结果，这种保存的方法本质是将结果保存到文件，相对于-o参数，会缺乏一些灵活性。）
 
 Try running the code:
 
@@ -92,7 +108,11 @@ node
 
 Congratulations! You've created your first bundle with Rollup.
 
+恭喜，你已经完成了一个打包过程。
+
 ### Using Config Files
+
+### 使用配置文件
 
 So far, so good, but as we start adding more options it becomes a bit of a nuisance to type out the command.
 
@@ -119,7 +139,11 @@ export default {
 
 (Note that you can use CJS modules and therefore `module.exports = {/* config */}`)
 
+（你也可以用CJS模块写法来写配置文件，如`module.exports = {/* config */}`）
+
 To use the config file, we use the `--config` or `-c` flag:
+
+要使用刚刚写好的设置文件，需要使用`--config` or `-c`标识：
 
 ```
 rm bundle.js # so we can check the command works!
@@ -128,13 +152,19 @@ rollup -c
 
 You can override any of the options in the config file with the equivalent command line options:
 
+你也可以在命令行选项中覆盖配置文件中的打包参数：
+
 ```
 rollup -c -o bundle-2.js # `-o` is equivalent to `--file` (formerly "output")
 ```
 
 _Note: Rollup itself processes the config file, which is why we're able to use `export default` syntax – the code isn't being transpiled with Babel or anything similar, so you can only use ES2015 features that are supported in the version of Node.js that you're running._
 
+_注意：你之所以能够使用es6的`export default`语法来写配置文件，是因为配置文件是由Rollup自身来处理的，配置文件的代码并不是经过了Babel之类的转译器转译，因此你只能使用你Node.js版本所支持的ES6特性。_
+
 You can, if you like, specify a different config file from the default `rollup.config.js`:
+
+如果需要，你也可以指定不同环境下的配置文件。
 
 ```
 rollup --config rollup.config.dev.js
@@ -143,9 +173,15 @@ rollup --config rollup.config.prod.js
 
 ### Installing Rollup locally
 
+### 在项目目录下安装Rollup
+
 When working within teams or distributed environments it can be wise to add Rollup as a _local_ dependency. Installing Rollup locally prevents the requirement that multiple contributors install Rollup separately as an extra step, and ensures that all contributors are using the same version of Rollup.
 
+在团队合作的项目下使用项目本地的Rollup来统一版本是一个很好的选择。本地安装Rollup可以保证组内人员使用同一版本的Rollup。
+
 To install Rollup locally with NPM:
+
+运行一下命令可以本地安装Rollup
 
 ```
 npm install rollup --save-dev
@@ -171,6 +207,8 @@ yarn rollup --config
 
 Once installed, it's common practice to add a single build script to `package.json`, providing a convenient command for all contributors. e.g.
 
+本地安装之后，使用npm脚本可以很方便地使用Rollup。
+
 ```json
 {
   "scripts": {
@@ -183,13 +221,23 @@ _Note: Once installed locally, both NPM and Yarn will resolve the dependency's b
 
 ### Using plugins
 
+### 使用插件
+
 So far, we've created a simple bundle from an entry point and a module imported via a relative path. As you build more complex bundles, you'll often need more flexibility – importing modules installed with NPM, compiling code with Babel, working with JSON files and so on.
+
+目前为止，我们以及创建了一个简单的打包。随着你的打包项目更加复杂，你通常需要更大的灵活性——引入通过 npm安装的模块，通过Babel转移代码，处理JSON格式文件等等。
 
 For that, we use _plugins_, which change the behaviour of Rollup at key points in the bundling process. A list of awesome plugins is maintained on [the Rollup Awesome List](https://github.com/rollup/awesome).
 
+为了实现上述需求，我们可以使用Plugins来增强Rollup打包。[the Rollup Awesome List](https://github.com/rollup/awesome)有一系列的插件可供选择。
+
 For this tutorial, we'll use [@rollup/plugin-json](https://github.com/rollup/plugins/tree/master/packages/json), which allows Rollup to import data from a JSON file.
 
+在本教程中，我们将使用 [@rollup/plugin-json](https://github.com/rollup/plugins/tree/master/packages/json)插件来导入JSON格式文件中的数据。
+
 Create a file in the project root called `package.json`, and add the following content:
+
+创建一个package.json文件，输入一下内容：
 
 ```json
 {
@@ -202,6 +250,8 @@ Create a file in the project root called `package.json`, and add the following c
 ```
 
 Install @rollup/plugin-json as a development dependency:
+
+安装@rollup/plugin-json开发依赖
 
 ```
 npm install --save-dev @rollup/plugin-json

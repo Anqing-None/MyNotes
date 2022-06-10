@@ -1,3 +1,8 @@
+/**
+ * 当访问一个不存在的属性时，副作用函数仍然会执行
+ * 重新设计存储副作用函数桶的数据结构，让属性与副作用函数一对多
+ */
+
 // 一个桶，记录副作用函数
 let bucket = new WeakMap();
 // 声明一个存储变量，用于存储正在执行的副作用函数
@@ -15,23 +20,22 @@ function effect(fn) {
 function track(target, key) {
 	// 如果没有正在运行的副作用函数，什么也不做，也就是无法追踪副作用函数
 	if (!activeEffect) return;
-
+	// deps是dependents的缩写，意味依赖，depsMap为依赖Map
 	let depsMap = bucket.get(target);
 	// 如果depsMap不存在，就创建
 	if (!depsMap) {
 		depsMap = new Map();
 		bucket.set(target, depsMap);
 	}
-
+	// deps是依赖副作用函数的集合，depsMap的键是响应式对象的属性，每个响应式数据中的属性都有对应的副作用函数集合set记录着副作用函数
 	let deps = depsMap.get(key);
-	// 与上述逻辑相同
+	// 与上述逻辑相同,没有就创建后设置
 	if (!deps) {
 		deps = new Set();
 		depsMap.set(key, deps);
 	}
-	// 记录谁来读取
+	// 记录副作用函数到set()集合中
 	deps.add(activeEffect);
-
 }
 
 function trigger(target, key) {

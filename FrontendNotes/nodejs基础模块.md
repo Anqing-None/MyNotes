@@ -263,7 +263,24 @@ process.stdin
 
 stdout
 
+### Stream
 
+流分为四类：
+
+- `Readable`: 可以通过管道读取、但不能通过管道写入的流（可以接收数据，但不能向其发送数据）。 当推送数据到可读流中时，会对其进行缓冲，直到使用者开始读取数据为止，`fs.createReadStream()`。
+- `Writable`: 可以通过管道写入、但不能通过管道读取的流（可以发送数据，但不能从中接收数据），`fs.createWriteStream()`。
+- `Duplex`: 可以通过管道写入和读取的流，基本上相对于是可读流和可写流的组合，net.Socket。
+- `Transform`: 类似于双工流、但其输出是其输入的转换的转换流，zlib.createDeflate()。
+
+#### 可读流
+
+创建一个可读流
+
+`const readableStream = fs.readFile('read.txt')`
+
+调用可读流的pipe方法，使其流向一个可写流
+
+`readableStream.pipe(writableStream)`
 
 ### Buffer
 
@@ -285,23 +302,21 @@ Buffer的内存使用由nodejs来控制，垃圾回收机制也由V8的GC来控�
 
 Buffer一般配合Stream流来使用，充当数据的缓冲区。
 
-
-
 实操：
 
-创建Buffer实例
+#### 创建Buffer实例
 
 在JS中一切皆对象，Buffer也是一个对象，三种方式创建Buffer实例。
 
-alloc
+#### alloc
 
 创建指定字节大小的buffer
 
-allocUnsafe
+#### allocUnsafe
 
 不安全的创建模式，所得的内存空间可能会有残留数据。
 
-from
+#### from
 
 接收数据，创建buffer，存入数据到buffer
 
@@ -309,7 +324,7 @@ from
 
 
 
-文件操作
+## 文件操作
 
 Node.js的文件操作方法存在两种类型：同步（sync）和异步（async）
 
@@ -343,7 +358,7 @@ options可以是Object类型和String类型，可以指定读取文件的三个�
 
 `fs.readFile("data.txt","utf8",(err,data)=>{...})`
 
-
+文件描述符fd
 
 ### writeFIle
 
