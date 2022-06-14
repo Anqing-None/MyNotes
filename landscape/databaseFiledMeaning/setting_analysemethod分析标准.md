@@ -1,6 +1,18 @@
 # setting_analysemethod
 
-分析方法设置表，记录所有分析标准
+分析方法设置表，记录所有分析标准。
+
+方法废止
+
+新增一个方法去替代老方法的逻辑问题
+
+1.在新增界面选择老方法
+
+老方法的IsAbolish字段会更新为1
+
+新增的方法的ReplaceWay会记录老方法的MethodID
+
+此时如果删除新方法，新方法的IsAbolish未将其状态更新为0
 
 ## methodID
 
@@ -28,21 +40,35 @@
 
 ## IsRemoved
 
-## PickRecord
+是否被移除，从前端界面删除此方法会将该字段标记为1
 
-## SeriaNo
+## _PickRecord
+
+## _SeriaNo
 
 ## SeriaNoSort
 
 ## IsAbolish
 
-方法是否被废除。
+方法是否被废除。如果方法被替代，此方法则应标记为废除。
 
 ## replaceWay
 
 方法更新情况，如果方法被替代，此字段会记录新的方法ID（methodID），用户可以查询到最新方法。
 
+替代的是已有的方法，也就是说，方法必须先存在。
 
+## replaceTime
+
+被替换时的时间
+
+## replacedBy
+
+此方法被“谁”替代，记录“谁”的MethodID
+
+## isCMA
+
+## OrgID
 
 
 

@@ -1,3 +1,7 @@
+# Node.js基础模块笔记
+
+## global
+
 nodejs运行时的全局对象是global，浏览器下的全局对象是window
 
 直接访问全局对象
@@ -49,7 +53,7 @@ console.log(this === global);
 // false
 ```
 
-如果在js文件内定义一个函数，打印函数内的this，会得到global
+但如果在js文件内定义一个函数，打印函数内的this，会得到global
 
 ```js
 function a() {
@@ -262,6 +266,49 @@ stdin
 process.stdin
 
 stdout
+
+## path
+
+path模块用于处理路径
+
+获取文件后缀
+
+获取文件目录
+
+#### basename
+
+`path.basename(path[,ext])`
+
+`path`：路径字符串
+
+`ext`：可选，文件后缀名字符串
+
+basename函数接收一个文件路径字符串，返回文件名或者最后一层路径名，如果传入ext与文件名后缀匹配，则直接返回文件名。
+
+获取路径的基础名称
+
+```javascript
+const path = require('path');
+
+path.basename("D:\\foo.html");
+// foo.html
+
+path.basename("D:\\foo.html", ".html");
+// foo
+
+path.basename("D:\\foo.html", "ml");
+// foo.ht
+
+path.basename("D:\\foo\\bar\\");
+// bar
+
+path.basename("D:\\foo\\bar\\", 'r');
+// ba
+```
+
+
+
+
 
 ### Stream
 
