@@ -1,6 +1,6 @@
-# Node.js基础模块笔记
+# Node.js基础模块
 
-## global
+## global全局变量
 
 nodejs运行时的全局对象是global，浏览器下的全局对象是window
 
@@ -102,8 +102,6 @@ module、exports：导出模块
 
 
 
-
-
 ### process
 
 获取进程信息，如运行环境、创建子进程...
@@ -114,7 +112,7 @@ module、exports：导出模块
 
 获取资源消耗信息：1.cpu 2.memory
 
-##### 获取内存消耗信息
+##### 内存使用
 
 ```js
 console.log(process.memoryUsage());
@@ -141,7 +139,7 @@ arrayBuffers：缓冲区大小
 
 
 
-##### CPU
+##### CPU使用
 
 ```js
 console.log(process.cpuUsage());
@@ -239,11 +237,7 @@ console.log(process.pid);
 console.log(process.uptime());
 ```
 
-
-
-
-
-#### 事件
+#### 进程事件
 
 进程退出会触发相应事件。
 
@@ -253,11 +247,7 @@ exit
 
 beforeExit
 
-
-
-#### 输入、输出
-
-
+#### 信息输入输出
 
 stdin
 
@@ -355,27 +345,35 @@ Buffer一般配合Stream流来使用，充当数据的缓冲区。
 
 在JS中一切皆对象，Buffer也是一个对象，三种方式创建Buffer实例。
 
-#### alloc
+##### alloc
 
 创建指定字节大小的buffer
 
-#### allocUnsafe
+`Buffer.alloc(size[,fill[,encoding]])`
+
+size: interger, 表示buffer长度，如4表示4个字节大小。
+
+fill: 用于填充buffer的值，默认为0，传入了fill参数则会调用fill方法
+
+
+
+##### allocUnsafe
 
 不安全的创建模式，所得的内存空间可能会有残留数据。
 
-#### from
+##### from
 
 接收数据，创建buffer，存入数据到buffer
 
 不推荐使用new创建Buffer实例，因为new创建的实例权限过于强大，不太安全。
 
+### fs
 
-
-## 文件操作
+fs是Node.js中的文件操作模块。文件操作包含读取、写入、创建、增添、拷贝。
 
 Node.js的文件操作方法存在两种类型：同步（sync）和异步（async）
 
-### readFile
+#### readFile
 
 读取文件
 
@@ -405,9 +403,7 @@ options可以是Object类型和String类型，可以指定读取文件的三个�
 
 `fs.readFile("data.txt","utf8",(err,data)=>{...})`
 
-文件描述符fd
-
-### writeFIle
+#### writeFIle
 
 写入文件
 
@@ -417,23 +413,21 @@ options可以是Object类型和String类型，可以指定读取文件的三个�
 
 `fs.writeFile('data.txt','content',(err) => {...})`
 
-### appendFile
+#### appendFile
 
 以追加内容的方式写入文件
 
-### copyFile
+#### copyFile
 
 复制文件
 
-### watchFile
+#### watchFile
 
 监听文件内容的变动
 
+#### open
 
-
-
-
-
+打开文件
 
 
 
