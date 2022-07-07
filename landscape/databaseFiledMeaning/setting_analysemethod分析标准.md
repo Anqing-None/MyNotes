@@ -1,5 +1,7 @@
 # setting_analysemethod
 
+![图示](../images/setting_analysisMethodFig1.jpg)
+
 分析方法设置表，记录所有分析标准。
 
 方法废止

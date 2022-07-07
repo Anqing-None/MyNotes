@@ -14,6 +14,9 @@
 ## InspectType
 检测类型，大类，如水（含大气降水）和废水
 ## ShortSpell
+
+化学符号
+
 ## Remark
 ## ShowId
 ## _InspectSubType

@@ -659,6 +659,18 @@ define([], function () {
 
 demo中，此文件存储在`/web/config/websheettags/xxx.js`
 
+
+
+##### autocomplete
+
+自动填充
+
+type = "autocomplete" options = "$userdata.SecondCode"
+
+
+
+
+
 #### cells
 
 cells定义了每个单元格的样式，默认文本
