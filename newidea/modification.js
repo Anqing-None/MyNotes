@@ -38,10 +38,11 @@ function round(num, precision) {
     if (typeof num !== "number") {
 
     }
+    // 这里的乘以10的x次方可以理解为将小数点移到要修约的位数，判断末尾是不是0.50000，且前一位为偶数
     if (Math.abs((num * Math.pow(10, precision))) % 2 == 0.5) {
-        return roundDown(num, precision);
+        return roundDown(num, precision).toFixed(precision);
     } else {
-        return roundNormal(num, precision);
+        return roundNormal(num, precision).toFixed(precision);
     }
 
     function roundDown(num, precision) {
@@ -54,4 +55,9 @@ function round(num, precision) {
     }
 }
 
-console.log(round(3.5651, 2))
+function toPrecision(num, precision) {
+    return Number(num).toPrecision(precision);
+}
+
+console.log(round(3.500, 2))
+console.log(toPrecision(3.500, 2))
