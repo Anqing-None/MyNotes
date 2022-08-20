@@ -39,6 +39,7 @@ function effect(fn) {
 
 }
 
+// 这里传入一个匿名函数，匿名函数也会被加入到桶中
 effect(() => {
 	let text = data.name;
 	console.log(text);
