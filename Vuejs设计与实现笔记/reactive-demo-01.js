@@ -4,15 +4,19 @@ let bucket = new Set();
 let _data = { name: "anqing" };
 
 let data = new Proxy(_data, {
+	// get会在data的属性被读取时调用
 	get(target, key) {
 		// 谁来读取此数据？记录下这个“谁”
+		// 即当属性被读取时，将副作用函数添加进桶内，记录下来，以便在set中调用
 		bucket.add(effect);
-		return target[key];
+		return target[key]; // 不对读取的值做处理
 	},
+	// set会在data的属性被赋值时调用
 	set(target, key, newValue) {
-		target[key] = newValue;
+		target[key] = newValue; // 进行正常赋值操作
+		// 开始做响应有关的事情
 		// 改变数据时，通知get中记录的“谁”
-		bucket.forEach(fn => fn());
+		bucket.forEach(fn => fn()); // 这里把之前记录的函数，统统执行，副作用函数会得到更新后的值
 		return true;
 	}
 })

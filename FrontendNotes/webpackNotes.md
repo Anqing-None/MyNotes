@@ -20,8 +20,20 @@ module.exports = {
 
 
 loader
-loader用于转换模块的源代码，比如ts->js,css=>
+loader用于转换模块的源代码，比如ts->js,css=>预处理器
+
 
 
 plugin
+插件
+插件用于压缩代码
+编译Vue模版等复杂任务
+
+mode
+打包模式
+development 开发模式
+production 生产模式
+
+配置
+
 
