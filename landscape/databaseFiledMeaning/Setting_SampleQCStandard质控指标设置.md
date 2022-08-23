@@ -34,3 +34,27 @@
 ## IsForEnvironQuality
 ## IsWithLiveBlanMax
 ## LiveBlankMaxConc
+
+## paraSampleRate
+
+平行样品率
+
+类型数值，20表示20%
+
+## BlankSampleMinCount
+
+空白样品，至少多少个
+
+类型数值，2表示至少2个
+
+## BlankSampleRate
+
+空白样品率，每20个样品测定一个空白，5%
+
+类型数值，5表示5%
+
+## addedSampleRate
+
+加标样品率
+
+类型数值，20表示20%
