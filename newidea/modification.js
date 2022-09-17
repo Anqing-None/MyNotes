@@ -43,7 +43,7 @@ function round(num, precision) {
     if (Math.abs((num * Math.pow(10, precision))) % 2 == 0.5) {
         return roundDown(num, precision).toFixed(precision);
     } else {
-        return roundNormal(num, precision);
+        return roundNormal(num, precision).toFixed(precision);
     }
 
     function roundDown(num, precision) {
@@ -56,4 +56,52 @@ function round(num, precision) {
     }
 }
 
-console.log(round(3.5651, 2))
+
+/* 科学计数法
+    - 科学计数法需要先修约
+    修约需要小数
+    有效位数
+    固定小数
+    用toPrecision兜底即可
+
+
+*/
+/**
+* brief
+* @summary description
+* @param {ParamDataTypeHere} signDigits - 有效位数
+* @return {ReturnValueDataTypeHere} Brief description
+*/
+function toScientific(num, signDigits = 2) {
+    if (typeof +num !== "number") {
+        console.log('roundDown修约失败，num非数值！');
+        return num;
+    }
+    num = Number(num);
+    const superNumberMap = { 0: "º", 1: "¹", 2: "²", 3: "³", 4: "⁴", 5: "⁵", 6: "⁶", 7: "⁷", 8: "⁸", 9: "⁹", "-1": "⁻¹", "-2": "⁻²", "-3": "⁻³", "-4": "⁻⁴", "-5": "⁻⁵", "-6": "⁻⁶", "-7": "⁻⁷", "-8": "⁻⁸", "-9": "⁻⁹" }
+
+    // 原生科学计数法分隔符
+    const splitString = Math.abs(num) >= 1 ? 'e+' : 'e';
+
+    const expNum = num.toExponential(); // 0: 0e+0 , 1000: 1e+3 , 1210: 1.21e+3
+    const [m, n] = expNum.toString().split(splitString); //m × 10n, 当num小于0时，m为负数，当num为小数时，n为负数
+    // 修约到有效位数
+    let roundedM = Number(round(Math.abs(m), signDigits - 1 )).toPrecision(signDigits); 
+    // num为负数的处理，加个负号
+    num < 0 ? roundedM = -roundedM : '';
+
+    const retStr = `${roundedM}×10${superNumberMap[n]}`;
+    return retStr;
+}
+
+function scientificToNum(sciNum) {
+    const baseNumberMap = { "º": 0, "¹": 1, "²": 2, "³": 3, "⁴": 4, "⁵": 5, "⁶": 6, "⁷": 7, "⁸": 8, "⁹": 9, "⁻¹": "-1", "⁻²": "-2", "⁻³": "-3", "⁻⁴": "-4", "⁻⁵": "-5", "⁻⁶": "-6", "⁻⁷": "-7", "⁻⁸": "-8", "⁻⁹": "-9" };
+    const [m, n] = sciNum.split('×10'); //m × 10n
+    const retNum = m * 10 ** baseNumberMap[n];
+    return retNum;
+}
+
+
+// console.log(round(3.5651, 2))
+
+console.log(toScientific(1051,2));
