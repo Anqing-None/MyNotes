@@ -4,5 +4,7 @@
 
 ``` typeScript
     const num : number = 123;
+    const str : name = 'anqing';
+    const boolean:isActive = false;
 
 ```

@@ -104,4 +104,137 @@ function scientificToNum(sciNum) {
 
 // console.log(round(3.5651, 2))
 
-console.log(toScientific(1051,2));
+// console.log(toScientific(1051,2));
+
+
+function nhSampleResultFormat(value, ValidDigit, DecimalDigit, LowestLimitValue, Lab_LowestFormat) {
+    let usedDigit = DecimalDigit; // 最终使用的有效位数，下面代码会依据条件更改
+    let ValidRoundDigit = null; // 
+    const judgementValue = Math.pow(10, ValidDigit - DecimalDigit);
+  
+    let usePrecision = false;
+    let useTofixed = false;
+    // 如果结果值小于10^(有效位数-小数位数) ，就按小数修约，否则就按有效位数修约
+    if (value > judgementValue) {
+      console.log(`使用有效位进行保留位数：${ValidDigit}`);
+      usedDigit = ValidDigit;
+      usePrecision = true;
+      // 使用有效位保留位数需要判断xx.xx小数点前有几位数字
+      const strVal = Number(value).toString();
+      if (strVal.includes('.')) {
+        const strList = strVal.split('.');
+        const beforeLens = strList[0].length;
+        if (ValidDigit >= beforeLens) {
+          ValidRoundDigit = ValidDigit - beforeLens;
+          console.log(`小数位前数字长度：${beforeLens},修约到底第${ValidRoundDigit}小数位`);
+        }
+        // 如果是0.xxx
+        if (strList[0] == 0) {
+          let afterNum = strList[strList.length - 1];
+          // 判断小数点后xxx是否有0，以此来确认修约位数
+          let afterNumList = [...afterNum];
+          let zeroCount = 0;
+          afterNumList.forEach(num => {
+            if (num == 0) {
+              zeroCount++;
+            }
+          });
+          ValidRoundDigit = ValidDigit + zeroCount;
+          console.log(`原始值为${value},小数点后零个数：${zeroCount},修约位数到第${ValidRoundDigit}小数位(有效位+零个数)`);
+        }
+      }
+    } else {
+      console.log(`使用小数位进行保留位数：${DecimalDigit}`);
+      usedDigit = DecimalDigit;
+      useTofixed = true;
+    }
+    // 1.先进行保留位数修约
+    let roundVal = round2(value, usedDigit);
+    if (ValidRoundDigit || ValidRoundDigit === 0) {
+      roundVal = round2(value, ValidRoundDigit);
+    }
+  
+    if (useTofixed) {
+      roundVal = Number(roundVal).toFixed(usedDigit);
+    } else if (usePrecision) {
+      roundVal = Number(roundVal).toPrecision(usedDigit);
+    }
+    let RoundValue = Number(roundVal);
+    let ScientificValue = roundVal;
+  
+    // 如果结果大于10^（有效位数），就用科学记数法，科学记数法乘号前面的数也按有效位数修约
+    if (value >= Math.pow(10, ValidDigit)) {
+      ScientificValue = toScientific2(Number(roundVal), ValidDigit);
+    }
+  
+    let ResultValue = value; // 样品结果的原始值，未经过任何处理
+    let ResultRoundValue = RoundValue; // 样品结果修约后的值，可能为检出限L/ND等字符串
+    let ResultScientificValue = ScientificValue;
+  
+    // 判断检出限
+    if (LowestLimitValue && LowestLimitValue != "" && LowestLimitValue != "-" && Number(value) < Number(LowestLimitValue)) {
+      let result = ''
+      switch (Lab_LowestFormat) {
+        case "检出限+L":
+          result = `${LowestLimitValue}L`
+          break;
+        case "ND":
+          result = `ND`
+          break;
+        default:
+          result = isNotNullOrEmpty(Lab_LowestFormat) ? Lab_LowestFormat.replace("{0}", LowestLimitValue) : "ND";
+      }
+      ResultRoundValue = result;
+      ResultScientificValue = result;
+    }
+  
+    return { ResultValue, ResultRoundValue, ResultScientificValue };
+  
+    function round2(num, precision) {
+      if (typeof +num !== "number") {
+        console.log('修约失败，num非数值！');
+        return num;
+      }
+      if (Math.abs((num * Math.pow(10, precision))) % 2 == 0.5) {
+        return roundDown(num, precision).toFixed(precision);
+      } else {
+        return roundNormal(num, precision).toFixed(precision);
+      }
+  
+      function roundDown(num, precision) {
+        return Math.floor(+num + 'e' + precision) / Math.pow(10, precision);
+  
+      }
+  
+      function roundNormal(num, precision) {
+        return Math.round(+num + 'e' + precision) / Math.pow(10, precision);
+      }
+    }
+  
+    function toScientific2(num, signDigits = 2) {
+      if (typeof +num !== "number") {
+        console.log('toScientific failed，num非数值！');
+        return num;
+      }
+      num = Number(num);
+      const superNumberMap = { 0: "º", 1: "¹", 2: "²", 3: "³", 4: "⁴", 5: "⁵", 6: "⁶", 7: "⁷", 8: "⁸", 9: "⁹", "-1": "⁻¹", "-2": "⁻²", "-3": "⁻³", "-4": "⁻⁴", "-5": "⁻⁵", "-6": "⁻⁶", "-7": "⁻⁷", "-8": "⁻⁸", "-9": "⁻⁹" }
+  
+      // 原生科学计数法分隔符
+      const splitString = Math.abs(num) >= 1 ? 'e+' : 'e';
+  
+      const expNum = num.toExponential(); // 0: 0e+0 , 1000: 1e+3 , 1210: 1.21e+3
+      const [m, n] = expNum.toString().split(splitString); //m × 10n, 当num小于0时，m为负数，当num为小数时，n为负数
+      // 修约到有效位数
+      let roundedM = Number(round2(Math.abs(m), signDigits)).toPrecision(signDigits);
+      // num为负数的处理，加个负号
+      num < 0 ? roundedM = -roundedM : '';
+  
+      const retStr = `${roundedM}×10${superNumberMap[n]}`;
+      return retStr;
+    }
+  };
+
+  // let ret = nhSampleResultFormat(1.2345,4,4,2,"检出限+L")
+  // console.log(ret);
+
+  console.log(round(0.565,2))
