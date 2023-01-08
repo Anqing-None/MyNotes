@@ -4,7 +4,7 @@
  */
 
 // 一个桶，记录副作用函数
-let bucket = new WeakMap();
+let bucket = new WeakMap();  // obj --> Map()
 // 声明一个存储变量，用于存储正在执行的副作用函数
 let activeEffect;
 
@@ -17,25 +17,32 @@ function effect(fn) {
 
 }
 
+/**
+* 追踪 读取属性时 正在执行的副作用函数
+* @summary 追踪
+* @param {Object} target - 被读取的对象
+* @param {String} key - 被读取的对象的属性
+* @return {undefined} 
+*/
 function track(target, key) {
 	// 如果没有正在运行的副作用函数，什么也不做，也就是无法追踪副作用函数
 	if (!activeEffect) return;
-	// deps是dependents的缩写，意味依赖，depsMap为依赖Map
-	let depsMap = bucket.get(target);
-	// 如果depsMap不存在，就创建
-	if (!depsMap) {
-		depsMap = new Map();
-		bucket.set(target, depsMap);
+	// deps是dependents的缩写，意味依赖，depsMap为依赖Map, key --> Fn,key是被代理的对象的某个属性，Fn是该对象key属性改变时，需要重新执行的副作用函数
+	let dependentsMap = bucket.get(target);
+	// 
+	if (!dependentsMap) {
+		dependentsMap = new Map();
+		bucket.set(target, dependentsMap);
 	}
 	// deps是依赖副作用函数的集合，depsMap的键是响应式对象的属性，每个响应式数据中的属性都有对应的副作用函数集合set记录着副作用函数
-	let deps = depsMap.get(key);
+	let dependents = dependentsMap.get(key); // dependent是一个Set，用来存放副作用函数
 	// 与上述逻辑相同,没有就创建后设置
-	if (!deps) {
-		deps = new Set();
-		depsMap.set(key, deps);
+	if (!dependents) {
+		dependents = new Set();
+		dependentsMap.set(key, deps);
 	}
 	// 记录副作用函数到set()集合中
-	deps.add(activeEffect);
+	dependents.add(activeEffect);
 }
 
 function trigger(target, key) {
