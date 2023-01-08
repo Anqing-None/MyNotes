@@ -1,9 +1,5 @@
-const fs = require('fs')
-const Stream = require('stream')
+let a = { username: 123, age: 233 }
 
-const readableStream = fs.createReadStream('webpackNotes.md')
+let { username: n, age: g } = a;
 
-const writableStream = fs.createWriteStream('test.md')
-
-readableStream.pipe(writableStream);
-
+console.log('n', n)
