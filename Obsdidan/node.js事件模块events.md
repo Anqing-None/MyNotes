@@ -4,7 +4,8 @@ node.js是事件驱动型语言。简单理解就是干完了一些活发出干�
 
 ## events
 
-events是node的内置模块，所以可以直接导入该模块`const Events = require('evetns');`。
+events是node的内置模块，所以可以直接导入该模块
+`const Events = require('events');`。
 
 引入模块后，得到EventEmitter构造函数。可以看到变量Events就是Events中的EventEmitter。
 ```javascript
