@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "0b538b40fb9c9b45",
+        "id": "fe7a18f2c8a64a10",
         "type": "tabs",
         "children": [
           {
-            "id": "2c2417e5eb0b5e09",
+            "id": "24fadf88e6199ac9",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -65,7 +65,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 226.5
   },
   "right": {
     "id": "42425aa2c8494c81",
@@ -130,17 +130,25 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "canvas:新建白板": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
-      "canvas:Create new canvas": false,
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false
     }
   },
-  "active": "2c2417e5eb0b5e09",
+  "active": "24fadf88e6199ac9",
   "lastOpenFiles": [
+    "开发笔记.md",
+    "未命名 1.canvas",
+    "未命名.canvas",
+    "eggNotes.md",
+    "正则.md",
+    "fabric api.md",
+    "clash.md",
     "node.js事件模块events.md",
-    "开发笔记.md"
+    "proxy_ownkey.md",
+    "questions.md"
   ]
 }
