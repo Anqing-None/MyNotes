@@ -31,8 +31,6 @@ commonJS（cjs）模块化与AMD模块化两者不兼容，所以又出现了UMD
 
 AMD(asynchronous module definition)
 
-
-
 IIFE( immediately-invoked function  expression)
 
 立即执行函数
