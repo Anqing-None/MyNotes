@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "fe7a18f2c8a64a10",
+        "id": "88fe94d813c46b6c",
         "type": "tabs",
         "children": [
           {
-            "id": "24fadf88e6199ac9",
+            "id": "72f6f1de300db9de",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "音视频开发/Readme.md.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "音视频开发/Readme.md.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "音视频开发/Readme.md.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "音视频开发/Readme.md.md"
+              }
             }
           }
         ]
@@ -138,8 +146,15 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "24fadf88e6199ac9",
+  "active": "6f23a09548f1c923",
   "lastOpenFiles": [
+    "音视频开发/Readme.md.md",
+    "音视频开发",
+    "JavaScript模块化.md",
+    "questions.md",
+    "sequelizeNotes.md",
+    "YoudonotknowJSnotes.md",
+    "Linux.md",
     "开发笔记.md",
     "未命名 1.canvas",
     "未命名.canvas",
@@ -148,7 +163,6 @@
     "fabric api.md",
     "clash.md",
     "node.js事件模块events.md",
-    "proxy_ownkey.md",
-    "questions.md"
+    "proxy_ownkey.md"
   ]
 }
