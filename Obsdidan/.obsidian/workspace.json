@@ -4,47 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "5ff7170cef2b473d",
+        "id": "8ab785303f1c361f",
         "type": "tabs",
         "children": [
           {
-            "id": "f0a079d5d1e8ab06",
+            "id": "25ec32b4a9c5e709",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "音视频开发/Readme.md.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "6beab4d92aab4ee2",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "音视频开发/ffmpeg常用命令.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e36c9c204830c65b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "音视频开发/名词解释.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -110,7 +81,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "音视频开发/名词解释.md",
+                "file": "职业思考/事业单位.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +98,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "音视频开发/名词解释.md",
+                "file": "职业思考/事业单位.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +121,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "音视频开发/名词解释.md"
+                "file": "职业思考/事业单位.md"
               }
             }
           }
@@ -171,27 +142,43 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "e36c9c204830c65b",
+  "active": "6f23a09548f1c923",
   "lastOpenFiles": [
+    "音视频开发/名词解释.md",
+    "编程/计算机网络/network.md",
+    "images/progit_v2.1.53_20220416172403.jpg.md",
+    "images/EventEmitter函数.png",
+    "images/预测关键帧.png",
+    "编程/未命名.md",
+    "编程/开发笔记.md",
+    "职业思考/事业单位.md",
+    "职业思考",
+    "questions.md",
+    "编程/Node.js",
+    "编程/JavaScript语言/YoudonotknowJSnotes.md",
+    "编程/JavaScript框架/Egg.js/sequelizeNotes.md",
+    "编程/Linux操作/Linux.md",
+    "编程/计算机网络",
+    "编程/Linux操作",
+    "未命名 1.canvas",
+    "未命名.md",
+    "编程/其他技能",
+    "编程/JavaScript框架/Fabric.js",
+    "编程/JavaScript框架/Egg.js",
+    "编程/JavaScript框架",
+    "编程/JavaScript语言/proxy_ownkey.md",
+    "编程/JavaScript语言",
+    "OwnPropertyKeys.md",
+    "编程",
+    "编程/JavaScript框架/Egg.js/eggNotes.md",
+    "编程/其他技能/clash.md",
+    "2022年6月21日.md",
     "音视频开发/ffmpeg常用命令.md",
     "音视频开发/Readme.md.md",
-    "images/预测关键帧.png",
-    "音视频开发/名词解释.md",
-    "未命名",
-    "音视频开发",
-    "JavaScript模块化.md",
-    "questions.md",
-    "sequelizeNotes.md",
-    "YoudonotknowJSnotes.md",
-    "Linux.md",
-    "开发笔记.md",
-    "未命名 1.canvas",
+    "编程/JavaScript语言/JavaScript模块化.md",
     "未命名.canvas",
-    "eggNotes.md",
     "正则.md",
-    "fabric api.md",
-    "clash.md",
-    "node.js事件模块events.md",
-    "proxy_ownkey.md"
+    "编程/JavaScript框架/Fabric.js/fabric api.md",
+    "编程/Node.js/node.js事件模块events.md"
   ]
 }

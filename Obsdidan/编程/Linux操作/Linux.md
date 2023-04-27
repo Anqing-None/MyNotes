@@ -10,3 +10,7 @@ tar -xzvf test.tar.gz
 
 #### 查看系统运行时间
 uptime
+
+#### 查看文件/目录大小
+du -sh a.txt
+

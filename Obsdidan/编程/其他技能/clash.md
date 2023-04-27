@@ -1,7 +1,3 @@
-# clash
-
-
-
 Clash 是用 Go 语言写的不带图形界面的命令行程序。
 
 Clash 提供了 http proxy 和 socks5 proxy 运行在两个不同端口。默认配置下 http proxy 在 7890 端口，而 socks proxy 在 7891 端口。
