@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "8ab785303f1c361f",
+        "id": "eaa4106c15265e17",
         "type": "tabs",
         "children": [
           {
-            "id": "25ec32b4a9c5e709",
+            "id": "f95f07fcc9aebfdc",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "职业思考/事业单位.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -142,26 +146,32 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "6f23a09548f1c923",
+  "active": "f95f07fcc9aebfdc",
   "lastOpenFiles": [
+    "音视频开发/Readme.md.md",
+    "2022年6月21日.md",
+    "职业思考/事业单位.md",
+    "2023年3月23日.md",
+    "未命名.md",
+    "编程/其他技能/git使用笔记.md",
+    "编程/其他技能/clash.md",
+    "编程/开发笔记.md",
+    "编程/Linux操作/Linux.md",
+    "音视频开发/ffmpeg常用命令.md",
     "音视频开发/名词解释.md",
     "编程/计算机网络/network.md",
     "images/progit_v2.1.53_20220416172403.jpg.md",
     "images/EventEmitter函数.png",
     "images/预测关键帧.png",
     "编程/未命名.md",
-    "编程/开发笔记.md",
-    "职业思考/事业单位.md",
     "职业思考",
     "questions.md",
     "编程/Node.js",
     "编程/JavaScript语言/YoudonotknowJSnotes.md",
     "编程/JavaScript框架/Egg.js/sequelizeNotes.md",
-    "编程/Linux操作/Linux.md",
     "编程/计算机网络",
     "编程/Linux操作",
     "未命名 1.canvas",
-    "未命名.md",
     "编程/其他技能",
     "编程/JavaScript框架/Fabric.js",
     "编程/JavaScript框架/Egg.js",
@@ -171,10 +181,6 @@
     "OwnPropertyKeys.md",
     "编程",
     "编程/JavaScript框架/Egg.js/eggNotes.md",
-    "编程/其他技能/clash.md",
-    "2022年6月21日.md",
-    "音视频开发/ffmpeg常用命令.md",
-    "音视频开发/Readme.md.md",
     "编程/JavaScript语言/JavaScript模块化.md",
     "未命名.canvas",
     "正则.md",

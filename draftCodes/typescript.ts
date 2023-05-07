@@ -36,3 +36,7 @@ if (value !== "a") {
 // This comparison appears to be unintentional because the types '"a"' and '"b"' have no overlap.
   // Oops, unreachable
 }
+
+let mess = 12;
+
+let txt = '234'
