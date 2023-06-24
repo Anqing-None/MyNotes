@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "eaa4106c15265e17",
+        "id": "1968605838df0f1c",
         "type": "tabs",
         "children": [
           {
-            "id": "f95f07fcc9aebfdc",
+            "id": "9f561cf05572b996",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "职业思考/事业单位.md",
+                "file": "音视频开发/名词解释.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "职业思考/事业单位.md",
+                "file": "音视频开发/名词解释.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "职业思考/事业单位.md",
+                "file": "音视频开发/名词解释.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "职业思考/事业单位.md"
+                "file": "音视频开发/名词解释.md"
               }
             }
           }
@@ -146,19 +146,19 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "f95f07fcc9aebfdc",
+  "active": "9f561cf05572b996",
   "lastOpenFiles": [
+    "音视频开发/ffmpeg常用命令.md",
     "音视频开发/Readme.md.md",
-    "2022年6月21日.md",
+    "音视频开发/名词解释.md",
     "职业思考/事业单位.md",
+    "2022年6月21日.md",
     "2023年3月23日.md",
     "未命名.md",
     "编程/其他技能/git使用笔记.md",
     "编程/其他技能/clash.md",
     "编程/开发笔记.md",
     "编程/Linux操作/Linux.md",
-    "音视频开发/ffmpeg常用命令.md",
-    "音视频开发/名词解释.md",
     "编程/计算机网络/network.md",
     "images/progit_v2.1.53_20220416172403.jpg.md",
     "images/EventEmitter函数.png",
