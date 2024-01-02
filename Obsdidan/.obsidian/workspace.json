@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "f77a9b95ec4441eb",
+        "id": "51914184d220995b",
         "type": "tabs",
         "children": [
           {
-            "id": "49ae91f0c3e8746d",
+            "id": "0b275f0c194cb740",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "drafts/docker.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -85,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "drafts/docker.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "drafts/docker.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "drafts/docker.md"
-              }
+              "state": {}
             }
           },
           {
@@ -156,8 +148,9 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "49ae91f0c3e8746d",
+  "active": "0b275f0c194cb740",
   "lastOpenFiles": [
+    "drafts/docker.md",
     "drafts/leaflet method.md",
     "drafts/Linear Algebra.md",
     "职业思考/碳中和.md",
@@ -178,7 +171,6 @@
     "drafts/机器学习.md",
     "drafts/打包JAVA模块和JRE.md",
     "drafts/地图的scale与zoom.md",
-    "drafts/docker.md",
     "drafts/clash for linux.md",
     "drafts/arcgis for javascript code sinpates.md",
     "drafts",
