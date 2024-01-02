@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "1968605838df0f1c",
+        "id": "f77a9b95ec4441eb",
         "type": "tabs",
         "children": [
           {
-            "id": "9f561cf05572b996",
+            "id": "49ae91f0c3e8746d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "音视频开发/名词解释.md",
+                "file": "drafts/docker.md",
                 "mode": "source",
                 "source": false
               }
@@ -58,10 +58,10 @@
             }
           },
           {
-            "id": "4dcbd9662e0b44e0",
+            "id": "2f2f68c588cbcf24",
             "type": "leaf",
             "state": {
-              "type": "starred",
+              "type": "bookmarks",
               "state": {}
             }
           }
@@ -69,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 226.5
+    "width": 255.5
   },
   "right": {
     "id": "42425aa2c8494c81",
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "音视频开发/名词解释.md",
+                "file": "drafts/docker.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "音视频开发/名词解释.md",
+                "file": "drafts/docker.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,17 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "音视频开发/名词解释.md"
+                "file": "drafts/docker.md"
+              }
+            }
+          },
+          {
+            "id": "9db648b96eb43585",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency"
               }
             }
           }
@@ -146,45 +156,54 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "9f561cf05572b996",
+  "active": "49ae91f0c3e8746d",
   "lastOpenFiles": [
-    "音视频开发/ffmpeg常用命令.md",
-    "音视频开发/Readme.md.md",
-    "音视频开发/名词解释.md",
-    "职业思考/事业单位.md",
-    "2022年6月21日.md",
-    "2023年3月23日.md",
-    "未命名.md",
-    "编程/其他技能/git使用笔记.md",
-    "编程/其他技能/clash.md",
-    "编程/开发笔记.md",
+    "drafts/leaflet method.md",
+    "drafts/Linear Algebra.md",
+    "职业思考/碳中和.md",
+    "编程/其他技能/docker.md",
+    "编程/Linux操作/常用命令.md",
+    "编程/Java.md",
+    "未命名.canvas",
+    "未命名 1.canvas",
+    "书单/书单.md",
+    "书单",
+    "media width.md",
+    "images/coordination.png",
+    "images/Pasted image 20230830093317.png",
+    "images/LeafletPanes.png",
+    "images/LeafletMapDOM.png",
+    "drafts/硬件.md",
+    "drafts/数据结构.md",
+    "drafts/机器学习.md",
+    "drafts/打包JAVA模块和JRE.md",
+    "drafts/地图的scale与zoom.md",
+    "drafts/docker.md",
+    "drafts/clash for linux.md",
+    "drafts/arcgis for javascript code sinpates.md",
+    "drafts",
+    "GIS开发/leaflet/源码解析草稿.md",
+    "GIS开发/leaflet/容器坐标.md",
+    "GIS开发/leaflet/leaflet.md",
+    "GIS开发/leaflet/Class.md",
+    "GIS开发/leaflet",
+    "GIS开发/GIS相关术语.md",
+    "2023-12-29.md",
     "编程/Linux操作/Linux.md",
-    "编程/计算机网络/network.md",
     "images/progit_v2.1.53_20220416172403.jpg.md",
-    "images/EventEmitter函数.png",
+    "编程/Node.js/node.js事件模块events.md",
+    "编程/计算机网络/network.md",
+    "未命名",
     "images/预测关键帧.png",
-    "编程/未命名.md",
+    "images/EventEmitter函数.png",
+    "Snipaste_2023-10-19_15-43-38.png",
+    "未命名 3.canvas",
+    "未命名 2.canvas",
+    "GIS开发",
     "职业思考",
-    "questions.md",
     "编程/Node.js",
-    "编程/JavaScript语言/YoudonotknowJSnotes.md",
-    "编程/JavaScript框架/Egg.js/sequelizeNotes.md",
     "编程/计算机网络",
     "编程/Linux操作",
-    "未命名 1.canvas",
-    "编程/其他技能",
-    "编程/JavaScript框架/Fabric.js",
-    "编程/JavaScript框架/Egg.js",
-    "编程/JavaScript框架",
-    "编程/JavaScript语言/proxy_ownkey.md",
-    "编程/JavaScript语言",
-    "OwnPropertyKeys.md",
-    "编程",
-    "编程/JavaScript框架/Egg.js/eggNotes.md",
-    "编程/JavaScript语言/JavaScript模块化.md",
-    "未命名.canvas",
-    "正则.md",
-    "编程/JavaScript框架/Fabric.js/fabric api.md",
-    "编程/Node.js/node.js事件模块events.md"
+    "编程/其他技能"
   ]
 }

@@ -14,7 +14,13 @@ Universal Module Definition，同时支持CJS与AMD
 
 ## ESM
 ECMA规范，未来趋势
-
+在node环境中使用es module：
+在package.json中指定以下字段
+```json
+{
+  "type": "module"
+}
+```
 ## package.json
 npm包package.json的main字段与module字段
 
