@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "51914184d220995b",
+        "id": "b5b58a897b242f25",
         "type": "tabs",
         "children": [
           {
-            "id": "0b275f0c194cb740",
+            "id": "83572c887ee61028",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "drafts/vite前端工程化配置Snippets.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -65,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 255.5
+    "width": 362.5
   },
   "right": {
     "id": "42425aa2c8494c81",
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "drafts/vite前端工程化配置Snippets.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "drafts/vite前端工程化配置Snippets.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "drafts/vite前端工程化配置Snippets.md"
+              }
             }
           },
           {
@@ -127,7 +135,9 @@
             "state": {
               "type": "all-properties",
               "state": {
-                "sortOrder": "frequency"
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
               }
             }
           }
@@ -148,43 +158,43 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "0b275f0c194cb740",
+  "active": "83572c887ee61028",
   "lastOpenFiles": [
+    "drafts/arcgis for javascript code sinpates.md",
+    "编程/Linux操作/常用命令.md",
+    "drafts/clash for linux.md",
+    "编程/开发笔记.md",
     "drafts/docker.md",
+    "drafts/clash.md",
+    "drafts/vite前端工程化配置Snippets.md",
+    "fileURLToPath.md",
+    "drafts/ts.md",
+    "drafts/tomcat.md",
+    "未命名.canvas",
+    "drafts/Java.md",
+    "drafts/硬件.md",
+    "drafts/git.md",
+    "drafts/打包JAVA模块和JRE.md",
+    "drafts/media width.md",
+    "drafts/maven.md",
+    "未命名 1.canvas",
+    "2023-12-29.md",
+    "drafts/java.md",
+    "drafts/地图的scale与zoom.md",
+    "drafts/机器学习.md",
     "drafts/leaflet method.md",
     "drafts/Linear Algebra.md",
     "职业思考/碳中和.md",
-    "编程/其他技能/docker.md",
-    "编程/Linux操作/常用命令.md",
-    "编程/Java.md",
-    "未命名.canvas",
-    "未命名 1.canvas",
     "书单/书单.md",
     "书单",
-    "media width.md",
     "images/coordination.png",
     "images/Pasted image 20230830093317.png",
     "images/LeafletPanes.png",
     "images/LeafletMapDOM.png",
-    "drafts/硬件.md",
     "drafts/数据结构.md",
-    "drafts/机器学习.md",
-    "drafts/打包JAVA模块和JRE.md",
-    "drafts/地图的scale与zoom.md",
-    "drafts/clash for linux.md",
-    "drafts/arcgis for javascript code sinpates.md",
     "drafts",
     "GIS开发/leaflet/源码解析草稿.md",
-    "GIS开发/leaflet/容器坐标.md",
-    "GIS开发/leaflet/leaflet.md",
-    "GIS开发/leaflet/Class.md",
     "GIS开发/leaflet",
-    "GIS开发/GIS相关术语.md",
-    "2023-12-29.md",
-    "编程/Linux操作/Linux.md",
-    "images/progit_v2.1.53_20220416172403.jpg.md",
-    "编程/Node.js/node.js事件模块events.md",
-    "编程/计算机网络/network.md",
     "未命名",
     "images/预测关键帧.png",
     "images/EventEmitter函数.png",
